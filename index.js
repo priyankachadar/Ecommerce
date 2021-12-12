@@ -9,13 +9,15 @@ const productRoute = require("./routes/product");
 const orderRoute = require("./routes/order");
 const cors = require("cors");
 const port = process.env.PORT || 5000;
+const url = process.env.MONGO_URL
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL,{
+
+mongoose.connect(url,{
     useNewUrlParser: true,
     useUnifiedTopology : true,
-    useCreateIndex: true
+    useCreateIndex: true,
   })
   .then(() => console.log("DB Connection Successfull!"))
   .catch((err) => {
